@@ -20,7 +20,8 @@ $('.con_text img, .con_desc img').not('a img:first-child').wrap(function(){
 	var ahref = $('<a href="' + $(this).attr('src') + '" />').colorbox({
 		transition: "none",
 		title: function(){
-			return '<h5 class="img_title">' + $(this).children('img').attr('alt') + '</h5>';
+			var alt = $(this).children('img').attr('alt') ? $(this).children('img').attr('alt') : '';
+			return '<h5 class="img_title">' + alt + '</h5>';
 		}
 	});
 	return ahref;
