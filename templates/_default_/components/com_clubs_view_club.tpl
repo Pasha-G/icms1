@@ -58,7 +58,7 @@
                         {if ($is_member || $is_admin || $is_moder) && $club.clubtype=='public'}
                         	<div class="invite"><a class="ajaxlink" href="javascript:void(0)" onclick="clubs.intive({$club.id});return false;">{$LANG.INVITE}</a></div>
                         {/if}
-                        {if $is_member}
+                        {if $is_member || $is_moder}
                         	<div class="leave"><a class="ajaxlink" href="javascript:void(0)" onclick="clubs.leaveClub({$club.id}, '{csrf_token}');return false;">{$LANG.LEAVE_CLUB}</a></div>
                         {elseif $club.admin_id != $user_id}
                         	<div class="join"><a class="ajaxlink" href="javascript:void(0)" onclick="clubs.joinClub({$club.id});return false;">{$LANG.JOIN_CLUB}</a></div>

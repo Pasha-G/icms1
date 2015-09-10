@@ -373,7 +373,7 @@ class cms_model_users{
 		if ($is_delete) {
 
 			$avatar = $this->inDB->get_field('cms_user_profiles', "user_id = '$user_id'", 'imageurl');
-            if ($avatar && $avatar != 'nopic.jpg'){
+            if($avatar and stripos($avatar, 'nopic') === false){
                  @unlink(PATH.'/images/users/avatars/'.$avatar);
                  @unlink(PATH.'/images/users/avatars/small/'.$avatar);
             }

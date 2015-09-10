@@ -69,7 +69,7 @@
 								{foreach key=field item=value from=$item.fields}
                                     {if $value}
                                         {if !strstr($field, '/~l~/')}
-                                            <div class="uc_itemfield"><strong>{$field}</strong>: {$value}
+                                            <div class="uc_itemfield"><strong>{$field}</strong>: {$value}</div>
                                         {else}
                                             {$value}
                                         {/if}

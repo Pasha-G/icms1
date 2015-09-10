@@ -35,10 +35,10 @@ cmsCore::loadClass('user');
 cmsCore::loadClass('actions');
 
 // Проверяем что директории установки и миграции удалены
-if(is_dir(PATH.'/install') || is_dir(PATH.'/migrate')) {
+/* if(is_dir(PATH.'/install') || is_dir(PATH.'/migrate')) {
     cmsPage::includeTemplateFile('special/installation.php');
     cmsCore::halt();
-}
+} */
 
 cmsCore::callEvent('GET_INDEX', '');
 

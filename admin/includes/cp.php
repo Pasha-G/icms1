@@ -427,7 +427,7 @@ function cpListTable($table, $_fields, $_actions, $where='', $orderby='title'){
 		foreach($filter as $key => $value){
 			if($filter[$key] && $filter[$key]!=-100){
                 $sql .= ' AND ';
-				if (!is_numeric($filter[$key])){
+				if(!is_numeric($filter[$key]) && $key != 'position'){
                     $sql .= $key . " LIKE '%" . $filter[$key] . "%'";
 				} else {
 					$sql .= $key . " = '" . $filter[$key] . "'";
