@@ -77,8 +77,11 @@
 <script type="text/javascript">
 	$(window).load(function(){
 		$('a.cboxElement').each(function(){
-			var alt = $(this).children('img').attr('alt') ? $(this).children('img').attr('alt') : '';
-			$(this).css('position','relative').append('<p class="img_title">' + alt + '</p>');
+			var img = $(this).children('img');
+			var alt = img.attr('alt') ? img.attr('alt') : '';
+			if(img.width() > 300){
+				$(this).css('position','relative').append('<p class="img_title">' + alt + '</p>');
+			}
 		});
 	});
 </script>
