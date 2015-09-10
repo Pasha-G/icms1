@@ -288,49 +288,50 @@ class cmsCore {
 
         if($plugins){
 
-        //перебираем плагины и вызываем каждый из них, передавая элемент $item
-        foreach($plugins as $plugin_name){
+			//перебираем плагины и вызываем каждый из них, передавая элемент $item
+			foreach($plugins as $plugin_name){
 
-            $plugin = $inCore->loadPlugin($plugin_name);
+				$plugin = $inCore->loadPlugin($plugin_name);
 
-            if($plugin !== false){
+				if($plugin !== false){
 
-                    // для отладки запоминаем названия
-                    if (cmsConfig::getConfig('debug')){
-                        $enabled_plugins[] = $plugin->info['title'];
-                    }
+					// для отладки запоминаем названия
+					if (cmsConfig::getConfig('debug')){
+						$enabled_plugins[] = $plugin->info['title'];
+					}
 
-                    $result = $plugin->execute($event, $item);
+					$result = $plugin->execute($event, $item);
 
-                if(isset($plugin->info['plugin_type'])){
-                    if(in_array($plugin->info['plugin_type'], $inCore->single_run_plugins)){
-                            break;
-                        }
-                    }
+					// если нужно вернуть для каждого плагина свой результат
+					if($is_all){
 
-                    // если нужно вернуть для каждого плагина свой результат
-                    if($is_all){
+						if($result !== false){
 
-                        if ($result !== false){
+							$plugins_list[] = array(
+								'result' => $result,
+								'info' => $plugin->info,
+								'config' => $plugin->config
+							);
 
-                            $plugins_list[] = array(
-                                'result' => $result,
-                                'info' => $plugin->info,
-                                'config' => $plugin->config
-                            );
+						}
 
-                    }
+					} else {
+						
+						$item = $result;
+					}
+					
+					if(isset($plugin->info['plugin_type'])){
+						if(in_array($plugin->info['plugin_type'], $inCore->single_run_plugins)){
+							// Вероятность конечно небольшая, но что если на этот эвент нужно повесить более одного плагина?
+							break;
+						}
+					}
 
-                    } else {
+					unset($plugin);
 
-                        $item = $result;
-
-                }
-
-                unset($plugin);
-
-            }
-        }
+				}
+			
+			}
 
         }
 

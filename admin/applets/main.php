@@ -215,7 +215,6 @@ function applet_main(){
                 <td><a href="/rss/blogs/all/feed.rss" id="rss_link"><?php echo $_LANG['AD_RSS_BLOGS']; ?></a></td>
               </tr>
               <tr>
-              <tr>
                 <td width="16"><img src="/images/markers/rssfeed.png" width="16" height="16" /></td>
                 <td><a href="/rss/forum/all/feed.rss" id="rss_link"><?php echo $_LANG['AD_RSS_FORUM']; ?></a></td>
                 <td width="16"><img src="/images/markers/rssfeed.png" width="16" height="16" /></td>
