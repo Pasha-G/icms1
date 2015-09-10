@@ -73,3 +73,11 @@
 {/if}
 
 {$article.plugins_output_after}
+
+<script type="text/javascript">
+	$(window).load(function(){
+		$('a.cboxElement').each(function(){
+			$(this).css('position','relative').append('<p class="img_title">' + $(this).children('img').attr('alt') + '</p>');
+		});
+	});
+</script>

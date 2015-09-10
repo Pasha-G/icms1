@@ -16,10 +16,16 @@ imgError: LANG_CBOX_IMG_ERROR
 $( '.lightbox-enabled' ).colorbox({ transition: "none"});
 
 //статьи анонсы и основной текст
-$( '.con_text img, .con_desc img' ).not('a img:first-child').wrap( function(){
-	var ahref = $( '<a href="' + $( this ).attr( 'src' ) + '" />').colorbox({ transition: "none" });
+$('.con_text img, .con_desc img').not('a img:first-child').wrap(function(){
+	var ahref = $('<a href="' + $(this).attr('src') + '" />').colorbox({
+		transition: "none",
+		title: function(){
+			return '<h5 class="img_title">' + $(this).children('img').attr('alt') + '</h5>';
+		}
+	});
 	return ahref;
 });
+
 //добавление класса вручную в шаблоне
 $('a.photobox').colorbox({ rel: 'gal', transition: "none", slideshow: true, width: "650px", height: "650px" });
 

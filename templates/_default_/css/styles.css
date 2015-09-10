@@ -728,6 +728,20 @@ h3 {
     padding:2px;
     border:solid 1px #444;
 }
+
+p.img_title{
+	font-size:18px;
+	color:#eee;
+	position:absolute;
+	right:0;
+	bottom:0;
+	padding:5px 10px;
+	background:#333;
+}
+
+h5.img_title{
+	color:#000;
+}
 /*------------------------- COMPONENT "PHOTOS" -------------------------------*/
 .photo_thumb img, .photo_layout img {
     width: 100%;
